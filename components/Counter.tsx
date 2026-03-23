@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import useDevice from '@/storage/useDevice';
+import { PressableScale } from 'pressto';
 
 function Counter() {
   const { count, increment, reset } = useDevice();
@@ -8,12 +9,12 @@ function Counter() {
   return (
     <View>
       <Text>{count}</Text>
-      <Pressable onPress={increment}>
+      <PressableScale onPress={increment}>
         <Text>+</Text>
-      </Pressable>
-      <Pressable onPress={reset}>
+      </PressableScale>
+      <PressableScale onPress={reset}>
         <Text>Reset</Text>
-      </Pressable>
+      </PressableScale>
     </View>
   );
 }
