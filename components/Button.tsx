@@ -1,6 +1,6 @@
 // components/Button.tsx
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 import { PressableScale } from 'pressto';
 
 type ButtonProps = {
@@ -17,7 +17,7 @@ export function Button({
   size = 'medium',
 }: ButtonProps) {
   return (
-    <PressableScale
+    <Pressable
       onPress={onPress}
       style={[styles.button, styles[variant], styles[size]]}
     >
@@ -26,7 +26,7 @@ export function Button({
       >
         {title}
       </Text>
-    </PressableScale>
+    </Pressable>
   );
 }
 
