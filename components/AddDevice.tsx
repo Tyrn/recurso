@@ -8,14 +8,15 @@ function AddDevice() {
   const [deviceName, setDeviceName] = useState('');
   const addDevice = useDeviceStore((state) => state.addDevice);
 
-  const handleAddDevice = () => {
-    if (!deviceName.trim()) {
-      Alert.alert('Error', 'Please enter a device name');
-      return;
-    }
+  const handleGenerateRandom = () => {
+    setDeviceName(`Oh-${Date.now() % 10000}`);
+  };
 
-    addDevice(deviceName);
-    setDeviceName('');
+  const handleAddDevice = () => {
+    if (deviceName.trim()) {
+      addDevice(deviceName);
+      setDeviceName('');
+    }
   };
 
   return (
@@ -26,6 +27,12 @@ function AddDevice() {
         onChangeText={setDeviceName}
         placeholder="Enter device name"
         placeholderTextColor="#999"
+      />
+      <Button
+        onPress={handleGenerateRandom}
+        title="🎲 Random"
+        variant="secondary"
+        size="small"
       />
       <Button
         onPress={handleAddDevice}

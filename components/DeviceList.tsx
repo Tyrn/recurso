@@ -30,6 +30,9 @@ function DeviceList() {
             <Text style={styles.removeButtonText}>✕</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.cardHeader}>
+          <Text style={styles.deviceName}>{item.id}</Text>
+        </View>
         <Counter deviceId={item.id} />
       </View>
     </Animated.View>
