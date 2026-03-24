@@ -6,6 +6,7 @@ interface CounterState {
   increment: (deviceId: string) => void;
   decrement: (deviceId: string) => void;
   reset: (deviceId: string) => void;
+  release: (deviceId: string) => void;
   getCount: (deviceId: string) => number;
 }
 
@@ -35,6 +36,13 @@ const useCounterStore = create<CounterState>((set, get) => ({
         [deviceId]: 0,
       },
     })),
+
+  release: (deviceId: string) =>
+    set((state) => {
+      // Clean up the counter state for this device
+      const { [deviceId]: _, ...remainingCounts } = state.counts;
+      return { counts: remainingCounts };
+    }),
 
   getCount: (deviceId: string) => get().counts[deviceId] || 0,
 }));

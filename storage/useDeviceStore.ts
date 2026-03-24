@@ -1,5 +1,6 @@
 // storage/useDeviceStore.ts
 import { create } from 'zustand';
+import useCounterStore from './useCounterStore';
 
 export type Device = {
   id: string;
@@ -28,10 +29,14 @@ const useDeviceStore = create<DeviceStore>((set) => ({
       ],
     })),
 
-  removeDevice: (id: string) =>
+  removeDevice: (id: string) => {
+    // Call counter store's release method before removing
+    useCounterStore.getState().release(id);
+
     set((state) => ({
       devices: state.devices.filter((device) => device.id !== id),
-    })),
+    }));
+  },
 
   updateDeviceName: (id: string, name: string) =>
     set((state) => ({
