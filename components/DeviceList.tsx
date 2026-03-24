@@ -1,25 +1,30 @@
-// components/DeviceList.tsx with FlatList
+// components/DeviceList.tsx
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
+import useDeviceStore from '@/storage/useDeviceStore';
 import Counter from './Counter';
 
-type Device = {
-  id: string;
-  name: string;
-};
+function DeviceList() {
+  const devices = useDeviceStore((state) => state.devices);
+  const removeDevice = useDeviceStore((state) => state.removeDevice);
 
-const DEFAULT_DEVICES: Device[] = [
-  { id: '1', name: 'Device 1' },
-  { id: '2', name: 'Device 2' },
-  { id: '3', name: 'Device 3' },
-  { id: '4', name: 'Device 4' },
-  { id: '5', name: 'Device 5' },
-];
-
-function DeviceList({ devices = DEFAULT_DEVICES }: { devices?: Device[] }) {
-  const renderItem = ({ item }: { item: Device }) => (
+  const renderItem = ({ item }: { item: { id: string; name: string } }) => (
     <View style={styles.card}>
-      <Text style={styles.deviceName}>{item.name}</Text>
+      <View style={styles.cardHeader}>
+        <Text style={styles.deviceName}>{item.name}</Text>
+        <TouchableOpacity
+          onPress={() => removeDevice(item.id)}
+          style={styles.removeButton}
+        >
+          <Text style={styles.removeButtonText}>✕</Text>
+        </TouchableOpacity>
+      </View>
       <Counter deviceId={item.id} />
     </View>
   );
@@ -50,12 +55,34 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
   },
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
   deviceName: {
     fontSize: 16,
     fontWeight: '600',
     color: '#000000',
-    marginBottom: 12,
+    flex: 1,
     textAlign: 'center',
+  },
+  removeButton: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: '#FF3B30',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+  removeButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   separator: {
     height: 12,
