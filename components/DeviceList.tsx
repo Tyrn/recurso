@@ -1,4 +1,3 @@
-// components/DeviceList.tsx
 import React from 'react';
 import {
   View,
@@ -7,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import Animated, { ZoomOut, LinearTransition } from 'react-native-reanimated';
 import useDeviceStore from '@/storage/useDeviceStore';
 import Counter from './Counter';
 
@@ -15,18 +15,24 @@ function DeviceList() {
   const removeDevice = useDeviceStore((state) => state.removeDevice);
 
   const renderItem = ({ item }: { item: { id: string; name: string } }) => (
-    <View style={styles.card}>
-      <View style={styles.cardHeader}>
-        <Text style={styles.deviceName}>{item.name}</Text>
-        <TouchableOpacity
-          onPress={() => removeDevice(item.id)}
-          style={styles.removeButton}
-        >
-          <Text style={styles.removeButtonText}>✕</Text>
-        </TouchableOpacity>
+    <Animated.View
+      exiting={ZoomOut.duration(200)}
+      layout={LinearTransition.springify().damping(20).mass(1).stiffness(500)}
+      style={styles.cardWrapper}
+    >
+      <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <Text style={styles.deviceName}>{item.name}</Text>
+          <TouchableOpacity
+            onPress={() => removeDevice(item.id)}
+            style={styles.removeButton}
+          >
+            <Text style={styles.removeButtonText}>✕</Text>
+          </TouchableOpacity>
+        </View>
+        <Counter deviceId={item.id} />
       </View>
-      <Counter deviceId={item.id} />
-    </View>
+    </Animated.View>
   );
 
   return (
@@ -36,6 +42,7 @@ function DeviceList() {
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.listContent}
       showsVerticalScrollIndicator={true}
+      persistentScrollbar={true}
       style={styles.list}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
     />
@@ -49,6 +56,9 @@ const styles = StyleSheet.create({
   },
   listContent: {
     padding: 16,
+  },
+  cardWrapper: {
+    width: '100%',
   },
   card: {
     backgroundColor: '#FFFFFF',
