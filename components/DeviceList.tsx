@@ -35,13 +35,18 @@ function DeviceList() {
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.listContent}
-      showsVerticalScrollIndicator={false}
+      showsVerticalScrollIndicator={true}
+      style={styles.list}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
     />
   );
 }
 
 const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+    width: '100%',
+  },
   listContent: {
     padding: 16,
   },
