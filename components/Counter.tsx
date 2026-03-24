@@ -1,22 +1,38 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import useDevice from '@/storage/useDevice';
-import { PressableScale } from 'pressto';
+import { Button } from '@/components/Button';
 
 function Counter() {
   const { count, increment, reset } = useDevice();
 
   return (
-    <View>
-      <Text>{count}</Text>
-      <PressableScale onPress={increment}>
-        <Text>+</Text>
-      </PressableScale>
-      <PressableScale onPress={reset}>
-        <Text>Reset</Text>
-      </PressableScale>
+    <View style={styles.container}>
+      <Text style={styles.count}>{count}</Text>
+      <View style={styles.buttonContainer}>
+        <Button onPress={increment} title="+" variant="primary" size="small" />
+        <Button onPress={reset} title="Reset" variant="danger" size="small" />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  count: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    marginBottom: 30,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    gap: 16,
+  },
+});
 
 export default Counter;
