@@ -14,7 +14,7 @@ export default function TabOneScreen() {
         darkColor="rgba(255,255,255,0.1)"
       />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
-      <Counter />
+      <Counter deviceId="1" />
     </View>
   );
 }
