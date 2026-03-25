@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#000000',
     flex: 1,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   removeButton: {
     width: 28,

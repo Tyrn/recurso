@@ -26,14 +26,15 @@ function Counter({ deviceId }: CounterProps) {
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
+    justifyContent: 'flex-start',
+    padding: 0,
   },
   count: {
-    fontSize: 48,
+    fontSize: 42,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginRight: 16,
   },
   buttonContainer: {
     flexDirection: 'row',
