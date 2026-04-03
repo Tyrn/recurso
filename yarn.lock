@@ -1614,6 +1614,11 @@
   resolved "https://registry.yarnpkg.com/@react-native/normalize-colors/-/normalize-colors-0.83.2.tgz#bcfede4a5bdc1c148c33fe7b7ce0fa0e2810bfb4"
   integrity sha512-gkZAb9LoVVzNuYzzOviH7DiPTXQoZPHuiTH2+O2+VWNtOkiznjgvqpwYAhg58a5zfRq5GXlbBdf5mzRj5+3Y5Q==
 
+"@react-native/normalize-colors@0.83.4":
+  version "0.83.4"
+  resolved "https://registry.yarnpkg.com/@react-native/normalize-colors/-/normalize-colors-0.83.4.tgz#211fd38a7f067ede9eeace504f0e45c090a383d4"
+  integrity sha512-9ezxaHjxqTkTOLg62SGg7YhFaE+fxa/jlrWP0nwf7eGFHlGOiTAaRR2KUfiN3K05e+EMbEhgcH/c7bgaXeGyJw==
+
 "@react-native/normalize-colors@^0.74.1":
   version "0.74.89"
   resolved "https://registry.yarnpkg.com/@react-native/normalize-colors/-/normalize-colors-0.74.89.tgz#b8ac17d1bbccd3ef9a1f921665d04d42cff85976"
@@ -2674,6 +2679,14 @@ expo-symbols@^55.0.5, expo-symbols@~55.0.5:
   dependencies:
     "@expo-google-fonts/material-symbols" "^0.4.1"
     sf-symbols-typescript "^2.0.0"
+
+expo-system-ui@^55.0.11:
+  version "55.0.11"
+  resolved "https://registry.yarnpkg.com/expo-system-ui/-/expo-system-ui-55.0.11.tgz#23b25b2555fb4c76fb17308b6ecb3ab89643c1b8"
+  integrity sha512-ZxcR9/BtL+fkKp1KPPLLc8xgvbqRcyYg+Drf3XjonY/bHIHiyZY1RLnVLxY1wSpFEly5pJkS9erspFok1ES5dQ==
+  dependencies:
+    "@react-native/normalize-colors" "0.83.4"
+    debug "^4.3.2"
 
 expo-web-browser@~55.0.10:
   version "55.0.10"
@@ -4202,6 +4215,11 @@ react-is@^19.1.0:
   version "19.2.4"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.2.4.tgz#a080758243c572ccd4a63386537654298c99d135"
   integrity sha512-W+EWGn2v0ApPKgKKCy/7s7WHXkboGcsrXE+2joLyVxkbyVQfO3MUEaUQDHoSmb8TFFrSKYa9mw64WZHNHSDzYA==
+
+react-native-ble-manager@^12.4.5:
+  version "12.4.5"
+  resolved "https://registry.yarnpkg.com/react-native-ble-manager/-/react-native-ble-manager-12.4.5.tgz#30c4e49095f6f4fc23196b703b412d9b5854946b"
+  integrity sha512-vVo4Ob9gdGOAjJnGr23ebZiUp2/4YBk9I7rAtFKguEdd5vu5ZPHQNXAz3GDV0bcaQ2Huepd1I4rwpmWQ6cMLxg==
 
 react-native-gesture-handler@^2.30.0:
   version "2.30.0"

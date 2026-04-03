@@ -16,13 +16,6 @@
       "supportsTablet": true
     },
     "android": {
-      "permissions": [
-        "android.permission.BLUETOOTH",
-        "android.permission.BLUETOOTH_ADMIN",
-        "android.permission.BLUETOOTH_SCAN",
-        "android.permission.BLUETOOTH_CONNECT",
-        "android.permission.ACCESS_FINE_LOCATION"
-      ],
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -38,15 +31,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router",
-      [
-        "react-native-ble-manager",
-        {
-          "isBleRequired": true,
-          "neverForLocation": true,
-          "bluetoothAlwaysPermission": "Allow BLE DEMO APP to connect to bluetooth devices"
-        }
-      ]
+      "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
