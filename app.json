@@ -44,7 +44,7 @@
         {
           "isBleRequired": true,
           "neverForLocation": true,
-          "bluetoothAlwaysPermission": "Allow BLE DEMO APP to connect to bluetooth devices"
+          "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
         }
       ]
     ],
