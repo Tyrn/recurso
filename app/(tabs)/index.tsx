@@ -256,12 +256,6 @@ const BluetoothDemoScreen: React.FC = () => {
       try {
         console.debug('[startScan] starting scan...');
         setIsScanning(true);
-        // BleManager.scan(SERVICE_UUIDS, SECONDS_TO_SCAN_FOR, ALLOW_DUPLICATES, {
-        //   matchMode: BleScanMatchMode.Sticky,
-        //   scanMode: BleScanMode.LowLatency,
-        //   callbackType: BleScanCallbackType.AllMatches,
-        // })
-        // BleManager.scan({ serviceUUIDs: [], seconds: 5 })
         BleManager.scan({
           serviceUUIDs: SERVICE_UUIDS,
           seconds: SECONDS_TO_SCAN_FOR,

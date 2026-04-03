@@ -64,6 +64,16 @@ mise install
 npx expo -v
 ```
 
+- Project health
+
+```
+npx expo-doctor
+```
+
+```
+npx expo install --fix
+```
+
 - On the Android device, keep the track of the application
   permissions. For now, _Location permission: Allow only
   while using the app_.
