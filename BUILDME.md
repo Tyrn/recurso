@@ -70,8 +70,20 @@ npx expo -v
 npx expo-doctor
 ```
 
+- Project upgrade
+
+```
+npx expo install expo@latest
+```
+
 ```
 npx expo install --fix
+```
+
+- Getting rid of the warnings
+
+```
+yarn add -D @babel/core
 ```
 
 - On the Android device, keep the track of the application
