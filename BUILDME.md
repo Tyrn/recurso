@@ -52,7 +52,6 @@ yarn create expo-app recurso -t tabs
 
 ```
 yarn = '1'
-pnpm = '10'
 node = '24.11'
 ```
 
@@ -68,7 +67,8 @@ mise install
 npx expo -v
 ```
 
-- Project health
+- Project health and
+  [dependencies](https://github.com/expo/fyi/blob/main/resolving-dependency-issues.md)
 
 ```
 npx expo-doctor
@@ -88,6 +88,13 @@ npx expo install --fix
 
 ```
 yarn add -D @babel/core
+```
+
+- [Deduplicating transitive dependencies](https://github.com/expo/fyi/blob/main/resolving-dependency-issues.md#3-deduplicating-transitive-dependencies-in-your-lockfile)
+  for [Yarn v1 (Classic)](https://classic.yarnpkg.com/lang/en/)
+
+```
+npx yarn-deduplicate && yarn
 ```
 
 - On the Android device, keep the track of the application
