@@ -8,6 +8,10 @@
 yarn create expo-app recurso -t tabs
 ```
 
+- The BLE code borrowed from
+  [here](https://github.com/cmcWebCode40/React-Native-Expo-Bluetooth-Integration);
+  [notes](https://medium.com/@chinweikemichaelchinonso/bluetooth-ble-integration-in-react-native-expo-new-architecture-ios-android-5c0100960979)
+
 ## Workflow
 
 - Build
