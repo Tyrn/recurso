@@ -1,7 +1,11 @@
-// components/Counter.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import useCounterStore from '@/storage/useCounterStore';
+import { useAtomValue, useSetAtom } from 'jotai';
+import {
+  countersAtom,
+  incrementCounterAtom,
+  resetCounterAtom,
+} from '@/store/deviceAtoms';
 import { Button } from '@/components/Button';
 
 type CounterProps = {
@@ -9,16 +13,29 @@ type CounterProps = {
 };
 
 function Counter({ deviceId }: CounterProps) {
-  const count = useCounterStore((state) => state.getCount(deviceId));
-  const increment = () => useCounterStore.getState().increment(deviceId);
-  const reset = () => useCounterStore.getState().reset(deviceId);
+  // Get the entire counters object, then extract the specific value
+  const allCounters = useAtomValue(countersAtom);
+  const count = allCounters[deviceId] || 0;
+
+  const increment = useSetAtom(incrementCounterAtom);
+  const reset = useSetAtom(resetCounterAtom);
 
   return (
     <View style={styles.container}>
       <Text style={styles.count}>{count}</Text>
       <View style={styles.buttonContainer}>
-        <Button onPress={increment} title="+" variant="primary" size="small" />
-        <Button onPress={reset} title="Reset" variant="danger" size="small" />
+        <Button
+          onPress={() => increment(deviceId)}
+          title="+"
+          variant="primary"
+          size="small"
+        />
+        <Button
+          onPress={() => reset(deviceId)}
+          title="Reset"
+          variant="danger"
+          size="small"
+        />
       </View>
     </View>
   );

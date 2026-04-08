@@ -1,12 +1,12 @@
-// components/AddDevice.tsx
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Alert } from 'react-native';
-import useDeviceStore from '@/storage/useDeviceStore';
+import { View, TextInput, StyleSheet } from 'react-native';
+import { useSetAtom } from 'jotai';
+import { addDeviceAtom } from '@/store/deviceAtoms';
 import { Button } from '@/components/Button';
 
 function AddDevice() {
   const [deviceName, setDeviceName] = useState('');
-  const addDevice = useDeviceStore((state) => state.addDevice);
+  const addDevice = useSetAtom(addDeviceAtom);
 
   const handleGenerateRandom = () => {
     setDeviceName(`Oh-${Date.now() % 10000}`);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {
   View,
   Text,
@@ -7,35 +7,52 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Animated, { ZoomOut, LinearTransition } from 'react-native-reanimated';
-import useDeviceStore from '@/storage/useDeviceStore';
+import { useAtomValue, useSetAtom } from 'jotai';
+import {
+  devicesAtom,
+  removeDeviceAtom,
+  countersAtom,
+} from '@/store/deviceAtoms';
 import Counter from './Counter';
 
+// Individual item component - gets device directly from devices array
+const DeviceItem = memo(
+  ({ deviceId, deviceName }: { deviceId: string; deviceName: string }) => {
+    const removeDevice = useSetAtom(removeDeviceAtom);
+
+    return (
+      <Animated.View
+        exiting={ZoomOut.duration(200)}
+        layout={LinearTransition.springify().damping(20).mass(1).stiffness(500)}
+        style={styles.cardWrapper}
+      >
+        <View style={styles.card}>
+          <View style={styles.cardHeader}>
+            <Text style={styles.deviceName}>{deviceName}</Text>
+            <TouchableOpacity
+              onPress={() => removeDevice(deviceId)}
+              style={styles.removeButton}
+            >
+              <Text style={styles.removeButtonText}>✕</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.cardHeader}>
+            <Text style={styles.deviceId}>{deviceId}</Text>
+          </View>
+          <Counter deviceId={deviceId} />
+        </View>
+      </Animated.View>
+    );
+  },
+);
+
+DeviceItem.displayName = 'DeviceItem';
+
 function DeviceList() {
-  const devices = useDeviceStore((state) => state.devices);
-  const removeDevice = useDeviceStore((state) => state.removeDevice);
+  const devices = useAtomValue(devicesAtom);
 
   const renderItem = ({ item }: { item: { id: string; name: string } }) => (
-    <Animated.View
-      exiting={ZoomOut.duration(200)}
-      layout={LinearTransition.springify().damping(20).mass(1).stiffness(500)}
-      style={styles.cardWrapper}
-    >
-      <View style={styles.card}>
-        <View style={styles.cardHeader}>
-          <Text style={styles.deviceName}>{item.name}</Text>
-          <TouchableOpacity
-            onPress={() => removeDevice(item.id)}
-            style={styles.removeButton}
-          >
-            <Text style={styles.removeButtonText}>✕</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.cardHeader}>
-          <Text style={styles.deviceName}>{item.id}</Text>
-        </View>
-        <Counter deviceId={item.id} />
-      </View>
-    </Animated.View>
+    <DeviceItem deviceId={item.id} deviceName={item.name} />
   );
 
   return (
@@ -86,6 +103,13 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'left',
   },
+  deviceId: {
+    fontSize: 12,
+    fontWeight: '400',
+    color: '#666666',
+    flex: 1,
+    textAlign: 'left',
+  },
   removeButton: {
     width: 28,
     height: 28,
@@ -93,9 +117,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF3B30',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    right: 0,
-    top: 0,
   },
   removeButtonText: {
     color: '#FFFFFF',

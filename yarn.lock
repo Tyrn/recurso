@@ -3175,6 +3175,21 @@ jimp-compact@0.16.1:
   resolved "https://registry.yarnpkg.com/jimp-compact/-/jimp-compact-0.16.1.tgz#9582aea06548a2c1e04dd148d7c3ab92075aefa3"
   integrity sha512-dZ6Ra7u1G8c4Letq/B5EzAxj4tLFHL+cGtdpR+PVm4yzPDj+lCk+AbivWt1eOM+ikzkowtyV7qSqX6qr3t71Ww==
 
+jotai-family@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jotai-family/-/jotai-family-1.0.1.tgz#0782aaaf22042b63111df4c1f9acf7b2ceff03cb"
+  integrity sha512-Zb/79GNDhC/z82R+6qTTpeKW4l4H6ZCApfF5W8G4SH37E4mhbysU7r8DkP0KX94hWvjB/6lt/97nSr3wB+64Zg==
+
+jotai-utils@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/jotai-utils/-/jotai-utils-0.0.0.tgz#c437b210dd5924cbc72739d583c18d2bf2db24a1"
+  integrity sha512-z/gS7iuWWwXY/JnvsYmcDpcFLnDsJVqkIFJ66h060LY5+cte8S7SDKEVEFPcoM6UQjyy3mj6eEKjcxb1+7OqZw==
+
+jotai@^2.19.1:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.19.1.tgz#55eee3e6e04ce6ad34a9006b1df603215d8e9919"
+  integrity sha512-sqm9lVZiqBHZH8aSRk32DSiZDHY3yUIlulXYn9GQj7/LvoUdYXSMti7ZPJGo+6zjzKFt5a25k/I6iBCi43PJcw==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
